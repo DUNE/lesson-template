@@ -14,19 +14,21 @@ keypoints:
 
 ## Here I describe how I built this lesson.  You can follow along. 
 
-
-
 > ## Note
-> Check out the [previous episode]({{ site.baseurl }}/00-Local-Setup-For-Local-Build.html) to set up a local server and to do local builds. 
+> Because github insists on using ghpages for deployment, it is good to use your own github account for initial (and ongoing)
+> development and pull over to [github.com/dune](https://github.com/dune) for the official version rather than using branches in the [github.com/dune](https://github.com/dune) github area.
+> If you do not have one, set one up now at [github.com](https://github.com). 
 {: .callout}
+
+---
 
 ## First you need to decide on a name for your new lesson. 
 
-> ## Note
-> Because github insists on using gh_pages for deployment, it is good to use your own github account for initial (and ongoing) development and pull over to /DUNE/ for the official version rather than using branches in the /DUNE/ github area.
-{: .callout}
+What is your plan for your lesson?  What are you going to call it? 
 
-## Do local setup for local rendering (optional)
+---
+
+## local setup for local rendering (optional)
 
 Then follow the instructions [https://carpentries.github.io/lesson-example/setup.html#setup-for-local-rendering-of-the-lessons-optional](https://carpentries.github.io/lesson-example/setup.html#setup-for-local-rendering-of-the-lessons-optional) for setup on your local machine - in principle this is optional but in practice it is really helpful.  You are going to need ruby and pyYAML.  I used conda on a mac but they have instructions for Windows, Mac and UNIX. 
 
@@ -34,25 +36,24 @@ Then follow the instructions [https://carpentries.github.io/lesson-example/setup
 > At this point you should stop following their instructions and start using our template to avoid overwriting DUNE specific items. 
 {: .caution}
 
-## Then import this template. 
+---
 
-### You can try using the Github importer
+## Then import this template into a new area in your account with your new name
 
--  Make certain you have a personal github site
 
-- Use [GitHub’s importer](https://github.com/new/import) to make a copy of this repo in your own GitHub account.
 
-This failed for us when we did it live. 
-
-### Or you can make a clone and give it your new name as follows
+### Recommended method: make a clone and give it your new name 
 
 1. Make certain you have a personal github site
-2. make a new repo on the github site:  `https://github.com/<yourname>?tab=repositories` by hitting the new button and entering the new name
+2. Make a new repo on the github site:  `https://github.com/<yourname>?tab=repositories` by hitting the New button and entering the new name
 3. Do the following git commands on your local machine
     ~~~
+    # make a copy with your new name
     git clone https://github.com/dune/lesson-template.git <yournewlessonname>
     cd <yournewlessonname>
+    # tell git that it is attached to the empty repository you just set up in step 2. 
     git remote set-url origin https://github.com/<yourname>>/<yournewlessonname>.git
+    # push it back to git
     git push
     ~~~
 
@@ -61,7 +62,7 @@ This failed for us when we did it live.
 page should appear at `https://<yourname>.github.io/<yournewlessonname>` in a couple of minutes.
 
 > ## if you can an error message from git
-> Git seems to have been messing with buffer sizes.  I was able to get around an error that looked like:
+> This is a pretty big repository so one can hit buffer sizes.  This is an error I saw when I tried to push for the first time.
 > ~~~
 > git push
 > Enumerating objects: 3939, done.
@@ -75,15 +76,24 @@ page should appear at `https://<yourname>.github.io/<yournewlessonname>` in a co
 > fatal: the remote end hung up unexpectedly
 > ~~~
 > {: .output}
-> Try this fix:
+> By increasing the buffer size
 > ~~~
 > git config http.postBuffer 524288000
 > ~~~
 > {: .source}
-> and try again. 
+> and trying again. 
+{: .challenge}
+
+### Or you could try using the Github importer
+
+> ## Note:  this failed when we tried it recently so above instructions may be better
 {: .callout}
 
-<!-- >> ## GitHub Import
+-  Make certain you have a personal github site
+
+- Use [GitHub’s importer](https://github.com/new/import) to make a copy of this repo in your own GitHub account.
+
+> ## GitHub Importer (failed when we tried it)
 > This is like a GitHub Fork, but is not connected to the upstream changes.
 {: .callout}
 
@@ -95,24 +105,26 @@ page should appear at `https://<yourname>.github.io/<yournewlessonname>` in a co
 
 - Make sure the repository is public.
 
-> ## Import to your GitHub account
+> ### Import to your GitHub account
 > Please import to your own account and new lesson, work there and then move it over to `/DUNE/` once you have a decent draft in place. 
 {: .callout}
 
--->
+---
 
-The difference from the carpentries is the addition of the DUNE logo and stuff specific to our lessons.  
-
-
-## now make a local copy on the gh-pages branch and edit away
+## Now make a local copy on the gh-pages branch and edit away
 
 If you did a github import you need to get a local copy
 ~~~
 git clone -b gh-pages <your new repository>
+cd <your new repository>
 ~~~
-{: .language-bash
+{: .language-bash}
 
-Otherwise you are already there 
+Otherwise you are already there.
+
+---
+
+## Explore the file structure
 
 You need to look at the following pages.
 
@@ -129,7 +141,7 @@ Then throw your individual modules into `_episodes` with leading numbers to set 
 
 There are very nice examples and a formatting tutorial at: [https://carpentries.github.io/lesson-example/](https://carpentries.github.io/lesson-example/)
 
-All lessons need to have a header that describes them
+## All lessons need to have a header that describes them
 
 ~~~
 ---
@@ -171,7 +183,7 @@ This does a lot of setup - it's pulling in a lot of ruby "gem" files.
 
 Your local site will be in _sites/index.html
 
-#### Checking
+### Checking
 
 ~~~ 
 make lesson-check
@@ -188,6 +200,8 @@ make serve
 {: .language-bash}
 
 will launch a web server and a site at: `http://127.0.0.1:4000`  
+
+(note that it is `http` not `https`)
 
 You may need to reload the web site to see your changes. 
 
