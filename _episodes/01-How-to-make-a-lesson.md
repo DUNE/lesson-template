@@ -1,7 +1,7 @@
 ---
 title: How to make a Lesson for DUNE
 teaching: 30
-exercises: 0
+exercises: 10
 questions:
 - How can I make a lesson like this from scratch using the DUNE template
 objectives:
@@ -36,9 +36,54 @@ Then follow the instructions [https://carpentries.github.io/lesson-example/setup
 
 ## Then import this template. 
 
+### You can try using the Github importer
+
+-  Make certain you have a personal github site
+
 - Use [GitHub’s importer](https://github.com/new/import) to make a copy of this repo in your own GitHub account.
 
-> ## GitHub Import
+This failed for us when we did it live. 
+
+### Or you can make a clone and give it your new name as follows
+
+1. Make certain you have a personal github site
+2. make a new repo on the github site:  `https://github.com/<yourname>?tab=repositories` by hitting the new button and entering the new name
+3. Do the following git commands on your local machine
+    ~~~
+    git clone https://github.com/dune/lesson-template.git <yournewlessonname>
+    cd <yournewlessonname>
+    git remote set-url origin https://github.com/<yourname>>/<yournewlessonname>.git
+    git push
+    ~~~
+
+
+4. Your code should appear at `https://github.com/<yourname>/<yournewlessonname>`and your
+page should appear at `https://<yourname>.github.io/<yournewlessonname>` in a couple of minutes.
+
+> ## if you can an error message from git
+> Git seems to have been messing with buffer sizes.  I was able to get around an error that looked like:
+> ~~~
+> git push
+> Enumerating objects: 3939, done.
+> Counting objects: 100% (3939/3939), done.
+> Delta compression using up to 12 threads
+> Compressing objects: 100% (1390/1390), done.
+> error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400
+> send-pack: unexpected disconnect while reading sideband packet
+> Writing objects: 100% (3939/3939), 3.86 MiB | 9.98 MiB/s, done.
+> Total 3939 (delta 2476), reused 3939 (delta 2476), pack-reused 0
+> fatal: the remote end hung up unexpectedly
+> ~~~
+> {: .output}
+> Try this fix:
+> ~~~
+> git config http.postBuffer 524288000
+> ~~~
+> {: .source}
+> and try again. 
+{: .callout}
+
+<!-- >> ## GitHub Import
 > This is like a GitHub Fork, but is not connected to the upstream changes.
 {: .callout}
 
@@ -54,6 +99,7 @@ Then follow the instructions [https://carpentries.github.io/lesson-example/setup
 > Please import to your own account and new lesson, work there and then move it over to `/DUNE/` once you have a decent draft in place. 
 {: .callout}
 
+-->
 
 The difference from the carpentries is the addition of the DUNE logo and stuff specific to our lessons.  
 

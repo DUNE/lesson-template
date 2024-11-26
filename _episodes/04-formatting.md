@@ -19,6 +19,8 @@ keypoints:
 math: true
 ---
 
+## this is a copy of the formatting instructions.  Copy example code from this into your practice area and modify.  
+
 A lesson consists of one or more episodes,
 each of which has:
 

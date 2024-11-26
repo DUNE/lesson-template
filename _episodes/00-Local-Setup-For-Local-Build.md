@@ -11,7 +11,7 @@ keypoints:
 ---
 
 
-## Instructions for local setup to build your lessons - very useful
+## Instructions for local setup to build your lessons 
 
 
 > ## Carpentries instructions 
