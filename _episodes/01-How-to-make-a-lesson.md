@@ -105,10 +105,14 @@ The difference from the carpentries is the addition of the DUNE logo and stuff s
 
 
 ## now make a local copy on the gh-pages branch and edit away
+
+If you did a github import you need to get a local copy
 ~~~
 git clone -b gh-pages <your new repository>
 ~~~
-{: .language-bash}
+{: .language-bash
+
+Otherwise you are already there 
 
 You need to look at the following pages.
 
