@@ -162,7 +162,7 @@ keypoints:
 
 {: .source}
 
-In particular, check out 
+### There is a more information at:
 
 - [Organization](https://carpentries.github.io/lesson-example/03-organization/index.html)
 - [Formatting](https://carpentries.github.io/lesson-example/04-formatting/index.html)
